@@ -1,0 +1,72 @@
+I need to develop a frontend application for NPCSH (Non-Player Character Shell) with comprehensive API integration:
+
+Pages Required:
+- Home/Chat Page: Main interface with conversation history, message input, and action buttons
+- Settings Page: API configuration panel, model selection, and connection status monitoring
+- Media Gallery: Display and organize AI-generated images from /vixynt command
+- Context Manager: Interface to manage conversation contexts (like /spool functionality)
+- API Documentation: Interactive documentation page showing available endpoints and usage examples
+
+User Roles and Permissions:
+- Standard User: Can use all AI features, save personal settings, view their conversation history
+- Developer User: Access to API keys management and additional debugging information
+- Guest User: Limited to basic conversations without saving history or preferences
+
+Shared Components:
+Navigation System - Side drawer with collapsible sections for main features and API documentation
+Header/Top Bar - Connection status indicator, endpoint selector, authentication token display
+API Status Panel - Visual indicator showing API health, response times, and error counts
+
+Modals/Popups:
+- API Configuration Dialog: Configure base URL, authentication, and timeout settings
+- Request Inspector: Shows raw request/response data for debugging
+- API Key Management: Secure interface to add/revoke API keys
+- Webhook Configuration: Setup for event notifications from NPCSH
+- Response Formatter: JSON/XML viewer for API responses
+
+Technical Requirements:
+- Use Tailwind CSS for styling with a clean, accessible interface
+- Implement a complete API client layer with the following features:
+  * Automatic request/response logging
+  * Retry logic for failed requests
+  * Authentication token management
+  * Rate limiting support
+  * Request cancellation
+- Create detailed TypeScript interfaces for all API requests and responses
+- Include Swagger/OpenAPI documentation generation for the expected API endpoints
+- Develop a mock API server that simulates all NPCSH functionality for development
+- Implement store/state management specifically designed around API request lifecycles
+
+API Integration Points:
+- Chat API: 
+  * POST /api/chat/message - Send user message and receive AI response
+  * GET /api/chat/history - Retrieve conversation history
+  * DELETE /api/chat/history - Clear conversation
+
+- Voice API:
+  * POST /api/voice/record - Send audio data for transcription
+  * GET /api/voice/status - Check processing status
+
+- Image Generation API:
+  * POST /api/generate/image - Create image from text prompt
+  * GET /api/gallery/images - List generated images
+
+- Context Management API:
+  * POST /api/context/create - Create new conversation context
+  * PUT /api/context/update - Add files/content to context
+  * GET /api/context/list - List available contexts
+
+- System API:
+  * GET /api/system/status - Check NPCSH service status
+  * POST /api/system/config - Update configuration
+
+Additional Considerations:
+- Include a comprehensive API documentation page with examples and try-it-now functionality
+- Create a developer console for viewing requests and debugging
+- Implement API key rotation and security best practices
+- Design with API versioning in mind
+- Include request/response schema validation
+- Provide configuration for different environments (development, staging, production)
+- Add WebSocket support for real-time notifications from NPCSH
+
+Please develop this application with well-structured API integration that could easily connect to an NPCSH backend, with clear documentation both in-app and in code comments.

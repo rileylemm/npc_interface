@@ -1,9 +1,38 @@
 // API Response Types
 export interface Message {
   id: string;
-  role: 'user' | 'system';
+  role: 'user' | 'system' | 'assistant';
   content: string;
-  timestamp: string;
+  timestamp?: string;
+}
+
+export interface MessageOptions {
+  temperature?: number;
+  maxTokens?: number;
+  model?: string;
+  provider?: string;
+  npc?: string;
+}
+
+export interface SendMessageRequest {
+  message: string;
+  context_id?: string;
+  options?: MessageOptions;
+}
+
+export interface SendMessageResponse {
+  id: string;
+  response: string;
+  created_at: string;
+  tokens: {
+    prompt: number;
+    completion: number;
+    total: number;
+  };
+}
+
+export interface ChatHistoryResponse {
+  messages: Message[];
 }
 
 export interface ChatResponse {

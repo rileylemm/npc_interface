@@ -56,15 +56,19 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = 5000;
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
+  // Use port 3000 with a simple listening approach
+  const PORT = 3000;
+  
+  // Add a specific route to check if the server is running
+  app.get('/api/health', (_req, res) => {
+    res.json({
+      status: 'ok',
+      message: 'NPCSH server is running'
+    });
+  });
+  
+  // Start the server with a more compatible approach
+  server.listen(PORT, 'localhost', () => {
+    log(`NPCSH API server running at http://localhost:${PORT}`);
   });
 })();
